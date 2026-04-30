@@ -2,6 +2,7 @@
 
 ## 1. Si estudio o hago tareas, entonces paso el curso, pero si no estudio, no paso.
 
+((E v T) → C) ^ (not E → not C)
 Dado que: estudio
 
 - ¿paso el curso? → True
@@ -10,7 +11,7 @@ Dado que: estudio
 ---
 
 ## 2. Si estudio, entonces si hago tareas paso el curso.
-
+E → (T → C)
 Dado que: estudio, hago tareas
 
 - ¿paso el curso? → True
@@ -18,7 +19,7 @@ Dado que: estudio, hago tareas
 ---
 
 ## 3. Voy al cine si y solo si termino la tarea y no estoy cansado.
-
+C<->(T ^ not C)
 Dado que: termino la tarea, no estoy cansado
 
 - ¿voy al cine? → True
@@ -27,7 +28,7 @@ Dado que: termino la tarea, no estoy cansado
 ---
 
 ## 4. Si el sistema responde y no hay timeout, entonces la transacción se procesa; de lo contrario, falla.
-
+((S ^ not T) → P) ^ not ((S ^ not T) → P)
 Dado que: el sistema responde, no hay timeout
 
 - ¿la transacción se procesa? → True
@@ -36,6 +37,6 @@ Dado que: el sistema responde, no hay timeout
 ---
 
 ## 5. No es cierto que si estudio entonces paso.
-
+not(E → P)
 - ¿estudio? → True
 - ¿no paso? → True
