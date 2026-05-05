@@ -34,3 +34,51 @@ Model the system rules as logical propositions, evaluate the known facts, and co
 ### Event to Corroborate
 
 If an intruder alert is now activated, does Ana's access to the server room change?
+
+## Problem 2: Clue Mystery
+
+A crime has occurred, and the objective is to determine the guilty character,
+the room where the crime happened, and the weapon used.
+There are three possible suspects:
+
+- ColMustard
+- ProfPlum
+- MsScarlet
+
+There are three possible rooms:
+
+- ballroom
+- kitchen
+- library
+
+There are three possible weapons:
+
+- knife
+- revolver
+- wrench
+
+The goal is to use logical propositions and known evidence to determine
+which possibilities are true, false, or still uncertain.
+
+## System Rules
+
+- There must be at least one character involved.
+- There must be at least one room involved.
+- There must be at least one weapon involved.
+
+## Facts
+
+- ColMustard is not involved.
+- The crime did not happen in the kitchen.
+- The weapon was not the revolver.
+- At least one of the following is false:
+  - MsScarlet is involved.
+  - The crime happened in the library.
+  - The weapon was the wrench.
+- ProfPlum is not involved.
+- The crime did not happen in the ballroom.
+
+## Task
+
+Evaluate the knowledge base and determine which symbols are definitely true,
+which are definitely false, and which are still unknown.
