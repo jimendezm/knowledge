@@ -99,7 +99,12 @@ Dado que: el sistema responde, no hay timeout
 - ¿la transacción se procesa? → True
 - ¿la transacción falla? → False
 """
+SistemaR= Symbol("SistemaR")
+TimeOut= Symbol("TimeOut")
+ProcesaT= Symbol("ProcesaT")
 
+knowledge5=And(Implication(And(SistemaR, Not(TimeOut)),ProcesaT),Not(Implication(And(SistemaR, Not(TimeOut)),ProcesaT)))
+knowledge5.add(ProcesaT)
 
 """
 ---
