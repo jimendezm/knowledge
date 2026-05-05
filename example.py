@@ -185,3 +185,59 @@ knowledge7.add(Not(EmergencyM))
 
 print(f"Ana enter the server room: {model_check(knowledge7, EnterSR)}")
 print(f"Ana enter the meeting room: {model_check(knowledge7, EnterMR)}")
+
+"""
+There are three possible suspects:
+
+- ColMustard
+- ProfPlum
+- MsScarlet
+
+There are three possible rooms:
+
+- ballroom
+- kitchen
+- library
+
+There are three possible weapons:
+
+- knife
+- revolver
+- wrench
+"""
+ColMustard=Symbol("ColMustard")
+ProfPlum=Symbol("ProfPlum")
+MsScarlet=Symbol("MsScarlet")
+
+ballroom=Symbol("ballroom")
+kitchen=Symbol("kitchen")
+library=Symbol("library")
+
+knife=Symbol("knife")
+revolver=Symbol("revolver")
+wrench=Symbol("wrench")
+
+knowledge8=And(
+    Or(ColMustard,ProfPlum,MsScarlet),
+    Or(ballroom,kitchen,library),
+    Or(knife,revolver,wrench)
+)
+
+knowledge8.add(Not(ColMustard))
+knowledge8.add(Not(kitchen))
+knowledge8.add(Not(revolver))
+knowledge8.add(Or(Not(MsScarlet), Not(library), Not(wrench)))
+knowledge8.add(Not(ProfPlum))
+knowledge8.add(Not(ballroom))
+
+print(f"Col did the crime: {model_check(knowledge8, ColMustard)}")
+print(f"Prof did the crime: {model_check(knowledge8, ProfPlum)}")
+print(f"Ms did the crime: {model_check(knowledge8, MsScarlet)}")
+
+print(f"and did the crime in a ballroom: {model_check(knowledge8, ballroom)}")
+print(f"and did the crime in a kitchen: {model_check(knowledge8, kitchen)}")
+print(f"and did the crime in a library: {model_check(knowledge8, library)}")
+
+print(f"and did the crime with a knife: {model_check(knowledge8, knife)}")
+print(f"and did the crime with a revolver: {model_check(knowledge8, revolver)}")
+print(f"and did the crime with a wrench: {model_check(knowledge8, wrench)}")
