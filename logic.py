@@ -177,6 +177,37 @@ class Or(Sentence):
             else set()
         )
 
+class XOR(Sentence):
+    def __init__(self, left, right):
+        Sentence.validate(left)
+        Sentence.validate(right)
+        self.left = left
+        self.right = right
+
+    def __eq__(self, other):
+        return (
+            isinstance(other, XOR)
+            and self.left == other.left
+            and self.right == other.right
+        )
+
+    def __hash__(self):
+        return hash(("XOR", hash(self.left), hash(self.right)))
+
+    def __repr__(self):
+        return f"XOR({self.left}, {self.right})"
+
+    def evaluate(self, model):
+        return self.left.evaluate(model) != self.right.evaluate(model)
+
+    def formula(self):
+        left = Sentence.parenthesize(self.left.formula())
+        right = Sentence.parenthesize(self.right.formula())
+        return f"{left} XOR {right}"
+
+    def symbols(self):
+        return set.union(self.left.symbols(), self.right.symbols())
+
 
 class Implication(Sentence):
     def __init__(self, antecedent, consequent):
