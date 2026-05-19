@@ -1,4 +1,4 @@
-from logic import And, Not, Implication, Or, Symbol, model_check, Biconditional
+from logic import And, Not, Implication, Or, Symbol, model_check, Biconditional, XOR
 
 """
 # Logical Propositions
@@ -129,52 +129,52 @@ online_class = Symbol("online_class")
 face_to_face_class = Symbol("face_to_face_class")
 study_completed = Symbol("study_completed")
 
-knowledge = And(
-    Biconditional(lab_access,And(Or(student_id, temporary_pass),Not(And(student_id, temporary_pass)))),
-    Biconditional(light_on,And(Or(switch1, switch2),Not(And(switch1, switch2)))),
-    Biconditional(account_recovery,And(Or(email_verification, phone_verification),Not(And(email_verification, phone_verification)))),
-    Biconditional(train_volleyball,And(Or(indoor_training, beach_training),Not(And(indoor_training, beach_training)))),
-    Biconditional(eat_fast_food,And(Or(pizza, hamburger),Not(And(pizza, hamburger)))),
-    Biconditional(play_sudoku,And(Or(android, iphone),Not(And(android, iphone)))),
-    Biconditional(go_to_university,And(Or(bus, car),Not(And(bus, car)))),
-    Biconditional(study_completed,And(Or(online_class, face_to_face_class),Not(And(online_class, face_to_face_class))))
+knowledge2 = And(
+    Biconditional(lab_access,XOR(student_id, temporary_pass)),
+    Biconditional(light_on,XOR(switch1, switch2)),
+    Biconditional(account_recovery,XOR(email_verification, phone_verification)),
+    Biconditional(train_volleyball,XOR(indoor_training, beach_training)),
+    Biconditional(eat_fast_food,XOR(pizza, hamburger)),
+    Biconditional(play_sudoku,XOR(android, iphone)),
+    Biconditional(go_to_university,XOR(bus, car)),
+    Biconditional(study_completed,XOR(online_class, face_to_face_class))
 )
-knowledge.add(student_id)
-knowledge.add(Not(temporary_pass))
+knowledge2.add(student_id)
+knowledge2.add(Not(temporary_pass))
 
-knowledge.add(switch1)
-knowledge.add(Not(switch2))
+knowledge2.add(switch1)
+knowledge2.add(Not(switch2))
 
-knowledge.add(email_verification)
-knowledge.add(Not(phone_verification))
+knowledge2.add(email_verification)
+knowledge2.add(Not(phone_verification))
 
-knowledge.add(indoor_training)
-knowledge.add(Not(beach_training))
+knowledge2.add(indoor_training)
+knowledge2.add(Not(beach_training))
 
-knowledge.add(pizza)
-knowledge.add(Not(hamburger))
+knowledge2.add(pizza)
+knowledge2.add(Not(hamburger))
 
-knowledge.add(android)
-knowledge.add(Not(iphone))
+knowledge2.add(android)
+knowledge2.add(Not(iphone))
 
-knowledge.add(bus)
-knowledge.add(Not(car))
+knowledge2.add(bus)
+knowledge2.add(Not(car))
 
-knowledge.add(online_class)
-knowledge.add(Not(face_to_face_class))
+knowledge2.add(online_class)
+knowledge2.add(Not(face_to_face_class))
 
 print("Lab access:")
-print(f" Access granted: {model_check(knowledge, lab_access)}\n")
+print(f" Access granted: {model_check(knowledge2, lab_access)}\n")
 
 print("Light system:")
-print(f" Light is on: {model_check(knowledge, light_on)}\n")
+print(f" Light is on: {model_check(knowledge2, light_on)}\n")
 
 print("Account recovery:")
-print(f" Account recovered: {model_check(knowledge, account_recovery)}\n")
+print(f" Account recovered: {model_check(knowledge2, account_recovery)}\n")
 
 print("Daily life examples:")
-print(f" Train volleyball: {model_check(knowledge, train_volleyball)}")
-print(f" Eat fast food: {model_check(knowledge, eat_fast_food)}")
-print(f" Play sudoku: {model_check(knowledge, play_sudoku)}")
-print(f" Go to university: {model_check(knowledge, go_to_university)}")
-print(f" Study completed: {model_check(knowledge, study_completed)}")
+print(f" Train volleyball: {model_check(knowledge2, train_volleyball)}")
+print(f" Eat fast food: {model_check(knowledge2, eat_fast_food)}")
+print(f" Play sudoku: {model_check(knowledge2, play_sudoku)}")
+print(f" Go to university: {model_check(knowledge2, go_to_university)}")
+print(f" Study completed: {model_check(knowledge2, study_completed)}")
